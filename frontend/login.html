@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Ducks - Login</title>
+  <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/9f428b9c2c.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="login.js" defer></script>
+
+  
+  <title>Book Ducks - Login</title>
+</head>
+<body>
+  <header>
+    <div>
+      <div name="logo">
+        <a href="index.html"><img class="header" src="./img/default_logo.png" alt="book_duck_logo"></a>
+      </div>
+      <nav>
+        <a href="register.html" class="registerLink">Sign Up</a>
+      </nav>
+  </header>
+
+  <div class="loginForm">
+    <div class="form-box">
+      <h2 id="formTitle">Sign in</h2>
+      <form class="login">
+        <div class="input-group">
+          <div class="input-field" id="usernameField">
+            <i class="fa-solid fa-user"></i>
+            <input type="text" placeholder="Username" id="identifier" />
+          </div>
+          <div class="input-field">
+            <i class="fa-solid fa-lock"></i>
+            <input type="password" placeholder="Password" id="login-password" />
+          </div>
+          <p>
+            Don't have an account?
+            <a href="register.html">Sign up here!</a>
+          </p>
+        </div>
+        <div class="btn-field">
+          <button type="button" id="loginBtn" onclick="login()">Login</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+
+      <footer>
+        <nav>
+          <p>Explore</p>
+          <a href="">Our Books</a>
+          <a href="">About Us</a>
+        </nav>
+        
+        <div class="footer-middle">
+          <a href="index.html"><img class="footer" src="./img/default_logo.png" alt="book_duck_logo"></a>
+          <div class="download">
+            <a href="#"><img class="playStore" src="./img/Play_Store.png" alt="playStore"></a>
+            <a href="#"><img class="appStore" src="./img/App_Store.png" alt="appStore"></a>
+          </div>
+      
+        </div>
+        <div class="footer-socialMedia">
+          <div id="facebook">
+            <i class="fa-brands fa-facebook"></i>
+            <p>Facebook</p>
+          </div>
+          <div id="twitter">
+            <i class="fa-brands fa-twitter"></i>
+            <p>Twitter</p>
+          </div>
+        
+          <div id="linkedin">
+            <i class="fa-brands fa-linkedin"></i>
+            <p>LinkedIn</p>
+          </div>
+        </div>
+            
+      </footer>
+    
+</body>
+</html>

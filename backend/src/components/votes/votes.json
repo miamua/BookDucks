@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_votes_votes",
+  "info": {
+    "displayName": "votes"
+  },
+  "options": {},
+  "attributes": {
+    "score": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::score.score"
+    },
+    "books": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book"
+    }
+  }
+}

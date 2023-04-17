@@ -1,0 +1,429 @@
+@import "./styles/partials/variables";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 25px;
+  text-align: center;
+  background: $bgBlue;
+  color: white;
+  font-size: 20px;
+
+  div {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  nav {
+    display: flex;
+    justify-content: space-around;
+    gap: 15px;
+
+    a {
+      text-decoration: none;
+      color: $darkBlue;
+      &:hover {
+        color: $orange;
+        text-decoration: underline;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+footer {
+  display: flex;
+  padding: 25px;
+  background: $bgBlue;
+  font-size: 20px;
+  justify-content: space-between;
+  color: $darkBlue;
+  margin-top: auto;
+  nav {
+    display: flex;
+    flex-direction: column;
+    p {
+      font-weight: bold;
+      padding: 10px 0px;
+    }
+    a {
+      padding-bottom: 5px;
+      text-decoration: none;
+      color: $darkBlue;
+
+      &:hover {
+        color: $orange;
+        text-decoration: underline;
+        font-weight: bolder;
+      }
+    }
+  }
+
+  .footer-middle {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    a {
+      margin-bottom: 10px;
+    }
+
+    .download {
+      display: flex;
+      gap: 20px;
+    }
+  }
+
+  .footer-socialMedia {
+    #facebook {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #twitter {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #linkedin {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+
+  .form-box {
+    width: 90%;
+    max-width: 450px;
+    background: $bgBlue;
+    padding: 50px 60px 70px;
+    text-align: center;
+    border: 2px solid $darkBlue;
+    border-radius: 20px;
+    margin: 5%;
+
+    h2 {
+      font-size: 30px;
+      margin-bottom: 60px;
+      color: $darkBlue;
+      position: relative;
+    }
+  }
+
+  .input-field {
+    background: lightgray;
+    margin: 15px 0;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+
+    input {
+      width: 100%;
+      background: transparent;
+      border: 0;
+      outline: 0;
+      padding: 18px 15px;
+    }
+
+    i {
+      margin-left: 15px;
+      color: $darkBlue;
+    }
+  }
+
+  p {
+    text-align: left;
+    font-size: 13px;
+
+    a {
+      text-decoration: none;
+      color: $babyBlue;
+    }
+  }
+
+  .btn-field {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+
+    button {
+      flex-basis: 48%;
+      background: $darkBlue;
+      color: white;
+      height: 40px;
+      border-radius: 20px;
+      border: 0;
+      outline: 0;
+      cursor: pointer;
+      margin-top: 20px;
+
+      &:hover {
+        background: $orange;
+      }
+    }
+  }
+
+  .input-group {
+    height: auto;
+  }
+}
+
+.bookContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+  .bookBox {
+    width: 80%;
+
+    h2 {
+      margin-bottom: 30px;
+    }
+    .booksContainer {
+      display: grid;
+      grid-template-columns: 20% 20% 20% 20%;
+      column-gap: 20px;
+      row-gap: 25px;
+      justify-content: space-evenly;
+
+      .bookDiv {
+        border: 2px solid $babyBlue;
+        border-radius: 10px;
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        .ratingDiv {
+          display: flex;
+          width: 210px;
+          justify-content: space-between;
+          margin-bottom: 10px;
+
+
+          .starsAndRatingDiv {
+            display: flex;
+            align-items: center;
+          }
+
+          .labelForBookMark {
+            font-size: 25px;
+          }
+
+          
+          }
+        }
+        .bookInfoDiv {
+            .info {
+                font-size: 15px;
+            }
+      }
+    }
+  }
+}
+
+/* HIDE RADIO */
+[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type="radio"] + i {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type="radio"]:checked + i {
+  outline: 2px solid #f00;
+}
+
+.checked {
+  color: #ffa600;
+}
+
+[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.logoutWelcomeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  width: 60%;
+  margin: 0 auto;
+
+  #ducky {
+    padding: 30px;
+  }
+  .logoutWelcomeText {
+    h1 {
+      color: $orange;
+    }
+    p {
+      color: $darkBlue;
+    }
+    #loggedInUsername {
+      color: $babyBlue;
+    }
+  }
+}
+
+.listsContainer {
+  display: flex;
+  justify-content: center;
+  
+  gap: 100px;
+  .readingList {
+    border: 2px solid $darkBlue;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 50px;
+    margin-bottom: 60px;
+
+    ul {
+      list-style-type: none;
+
+      .bookDiv {
+        border: 2px solid $babyBlue;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+
+        .title {
+          font-weight: bold;
+          color: $darkBlue;
+        }
+        .rating {
+          font-style: italic;
+          font-size: smaller;
+          color: $orange;
+        }
+
+        .removeBtn{
+            align-self: end;
+        }
+      }
+    }
+    select {
+      margin: 20px 0px 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+
+  .ratingList {
+    border: 2px solid $darkBlue;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    width: 30%;
+    padding: 50px;
+    margin-bottom: 60px;
+
+    ul {
+      list-style-type: none;
+
+      .bookDiv {
+        border: 2px solid $orange;
+        border-radius: 10px;
+        margin-bottom: 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+
+        .title {
+          font-weight: bold;
+          color: $darkBlue;
+        }
+        .rating {
+          font-style: italic;
+          font-size: smaller;
+          color: $orange;
+        }
+      }
+    }
+    select {
+      margin: 20px 0px 20px;
+    }
+    h2 {
+      text-align: center;
+    }
+  }
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px 70px;
+
+  h1 {
+    margin-bottom: 20px;
+    color: $orange;
+  }
+  .title {
+    font-weight: bolder;
+    color: $babyBlue;
+  }
+}
+
+header.dark {
+  background: $darkBlue;
+  color: white;
+  a {
+    color: $orange;
+  }
+}
+
+body.dark {
+  background: gainsboro;
+  color: $darkBlue;
+}
+
+footer.dark {
+  background: $darkBlue;
+  color: white;
+  a {
+    text-decoration: none;
+    color: $orange;
+    &:hover {
+      color: $orange;
+      text-decoration: underline;
+      font-weight: bolder;
+    }
+  }
+}

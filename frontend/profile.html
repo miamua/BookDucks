@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Ducks - My Profile</title>
+  <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://kit.fontawesome.com/9f428b9c2c.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="main.js" defer></script>
+  <script src="profile.js" defer></script>
+  <script src="login.js" defer></script>
+
+  <title>Book Ducks - Login</title>
+</head>
+<body>
+  <header>
+    <div>
+      <div name="logo">
+        <a href="index.html"><img class="header" src="./img/default_logo.png" alt="book_duck_logo"></a>
+      </div>
+      <nav>
+        <a href="javascript:logout();" class="logoutLink">Logout</a>
+      </nav>
+  </header>
+
+<div class="profile">
+  <h1>My Profile</h1>
+  <div>
+    <h3><span class="title">Name: </span> <span id="loggedInUsername"></span></h3>
+    <h3><span class="title">Email: </span> <span id="loggedInEmail"></span></h3>
+  </div>
+</div>
+
+<div class="listsContainer">
+  <div class="readingList">
+    <h2>My reading List</h2>
+    <div>
+      <label>Filters :</label>
+      <select class="sorting1">
+        <option>Title</option>
+        <option>Author</option>
+        <option>Rating</option>
+      </select>
+    </div>
+    <div>
+      <ul class="readingUl"></ul>
+    </div>
+  </div>
+
+
+  <div class="ratingList">
+    <h2>My rated books</h2>
+    <div>
+      <label>Filters :</label>
+      <select class="sorting2">
+        <option>Title</option>
+        <option>Author</option>
+        <option>Rating</option>
+      </select>
+    </div>
+    <div>
+      <ul class="ratingUl"></ul>
+    </div>
+  </div>
+</div>
+
+ 
+
+ <footer>
+    <nav>
+      <p>Explore</p>
+      <a href="">Our Books</a>
+      <a href="">About Us</a>
+    </nav>
+    <div class="footer-middle">
+      <a href="index.html"><img class="footer" src="./img/default_logo.png" alt="book_duck_logo"></a>
+      <div class="download">
+        <a href="#"><img class="playStore" src="./img/Play_Store.png" alt="playStore"></a>
+        <a href="#"><img class="appStore" src="./img/App_Store.png" alt="appStore"></a>
+      </div>
+  
+    </div>
+    <div class="footer-socialMedia">
+      <div id="facebook">
+        <i class="fa-brands fa-facebook"></i>
+        <p>Facebook</p>
+      </div>
+      <div id="twitter">
+        <i class="fa-brands fa-twitter"></i>
+        <p>Twitter</p>
+      </div>
+    
+      <div id="linkedin">
+        <i class="fa-brands fa-linkedin"></i>
+        <p>LinkedIn</p>
+      </div>
+    </div>
+        
+  </footer>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/9f428b9c2c.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="./img/favicon.ico" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="style.css">
+    <script src="main.js" defer></script>
+    <script src="login.js" defer></script>
+    <title>Book Ducks</title>
+</head>
+
+<body>
+    <header>
+        <div>
+            <div name="logo">
+                <a href="index.html"><img class="header" src="./img/default_logo.png" alt="book_duck_logo"></a>
+            </div>
+            <nav>
+                <a href="login.html" class="loginLink">Log in</a>
+                <a href="profile.html" class="userProfiletLink hidden">My Profile</a>
+                <a href="javascript:logout();" class="logoutLink hidden">Logout</a>
+                <a href="register.html" class="registerLink">Sign Up</a>
+                <a href="profile.html" class="profileLink hidden">My Profile</a>
+            </nav>
+    </header>
+
+
+    <div class="logoutWelcomeContainer">
+        <div id="ducky">
+          <img src="./img/icon _duck.svg" alt="duck">
+        </div>
+        <div class="logoutWelcomeText">
+          <h1>Welcome to Book Ducks</h1>
+          <h2 class="welcome hidden">
+            What would you like to read today? <span id="loggedInUsername"></span>
+          </h2>
+          <p id="siteDesc">The future of reading is here with Book Ducks, the cutting-edge e-book technology that allows you
+            to save and
+            rate
+            books for later reading. This revolutionary product is perfect for those who love to read but don the time or
+            space
+            to carry around physical books. With Book Ducks, you can carry your in your pocket and access it anytime,
+            anywhere.
+          </p>
+        </div>
+      </div>
+
+
+<div class="bookContent">
+ <div class="bookBox">
+  <h2>Our books</h2>
+    <div class="booksContainer">
+    </div>
+  </div>
+</div>
+
+  
+  <footer>
+    <nav>
+      <p>Explore</p>
+      <a href="">Our Books</a>
+      <a href="">About Us</a>
+    </nav>
+    <div class="footer-middle">
+      <a href="index.html"><img class="footer" src="./img/default_logo.png" alt="book_duck_logo"></a>
+      <div class="download">
+        <a href="#"><img class="playStore" src="./img/Play_Store.png" alt="playStore"></a>
+        <a href="#"><img class="appStore" src="./img/App_Store.png" alt="appStore"></a>
+      </div>
+
+    </div>
+    <div class="footer-socialMedia">
+      <div id="facebook">
+        <i class="fa-brands fa-facebook"></i>
+        <p>Facebook</p>
+      </div>
+      <div id="twitter">
+        <i class="fa-brands fa-twitter"></i>
+        <p>Twitter</p>
+      </div>
+    
+      <div id="linkedin">
+        <i class="fa-brands fa-linkedin"></i>
+        <p>LinkedIn</p>
+      </div>
+    </div>
+        
+  </footer>
+
+
+
+
+
+</body>
+
+</html>

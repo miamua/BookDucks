@@ -1,0 +1,385 @@
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  box-sizing: border-box;
+}
+
+.hidden {
+  display: none;
+}
+
+body {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  padding: 25px;
+  text-align: center;
+  background: #F4FAFD;
+  color: white;
+  font-size: 20px;
+}
+header div {
+  display: flex;
+  justify-content: space-between;
+}
+header nav {
+  display: flex;
+  justify-content: space-around;
+  gap: 15px;
+}
+header nav a {
+  text-decoration: none;
+  color: #023047;
+}
+header nav a:hover {
+  color: #FB8500;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+footer {
+  display: flex;
+  padding: 25px;
+  background: #F4FAFD;
+  font-size: 20px;
+  justify-content: space-between;
+  color: #023047;
+  margin-top: auto;
+}
+footer nav {
+  display: flex;
+  flex-direction: column;
+}
+footer nav p {
+  font-weight: bold;
+  padding: 10px 0px;
+}
+footer nav a {
+  padding-bottom: 5px;
+  text-decoration: none;
+  color: #023047;
+}
+footer nav a:hover {
+  color: #FB8500;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+footer .footer-middle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+footer .footer-middle a {
+  margin-bottom: 10px;
+}
+footer .footer-middle .download {
+  display: flex;
+  gap: 20px;
+}
+footer .footer-socialMedia #facebook {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+footer .footer-socialMedia #twitter {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+footer .footer-socialMedia #linkedin {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+}
+.loginForm .form-box {
+  width: 90%;
+  max-width: 450px;
+  background: #F4FAFD;
+  padding: 50px 60px 70px;
+  text-align: center;
+  border: 2px solid #023047;
+  border-radius: 20px;
+  margin: 5%;
+}
+.loginForm .form-box h2 {
+  font-size: 30px;
+  margin-bottom: 60px;
+  color: #023047;
+  position: relative;
+}
+.loginForm .input-field {
+  background: lightgray;
+  margin: 15px 0;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+.loginForm .input-field input {
+  width: 100%;
+  background: transparent;
+  border: 0;
+  outline: 0;
+  padding: 18px 15px;
+}
+.loginForm .input-field i {
+  margin-left: 15px;
+  color: #023047;
+}
+.loginForm p {
+  text-align: left;
+  font-size: 13px;
+}
+.loginForm p a {
+  text-decoration: none;
+  color: #219EBC;
+}
+.loginForm .btn-field {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.loginForm .btn-field button {
+  flex-basis: 48%;
+  background: #023047;
+  color: white;
+  height: 40px;
+  border-radius: 20px;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+  margin-top: 20px;
+}
+.loginForm .btn-field button:hover {
+  background: #FB8500;
+}
+.loginForm .input-group {
+  height: auto;
+}
+
+.bookContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 60px;
+}
+.bookContent .bookBox {
+  width: 80%;
+}
+.bookContent .bookBox h2 {
+  margin-bottom: 30px;
+}
+.bookContent .bookBox .booksContainer {
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20%;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 25px;
+  justify-content: space-evenly;
+}
+.bookContent .bookBox .booksContainer .bookDiv {
+  border: 2px solid #219EBC;
+  border-radius: 10px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookContent .bookBox .booksContainer .bookDiv .ratingDiv {
+  display: flex;
+  width: 210px;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.bookContent .bookBox .booksContainer .bookDiv .ratingDiv .starsAndRatingDiv {
+  display: flex;
+  align-items: center;
+}
+.bookContent .bookBox .booksContainer .bookDiv .ratingDiv .labelForBookMark {
+  font-size: 25px;
+}
+.bookContent .bookBox .booksContainer .bookInfoDiv .info {
+  font-size: 15px;
+}
+
+/* HIDE RADIO */
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + i {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + i {
+  outline: 2px solid #f00;
+}
+
+.checked {
+  color: #ffa600;
+}
+
+[type=checkbox] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.logoutWelcomeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  width: 60%;
+  margin: 0 auto;
+}
+.logoutWelcomeContainer #ducky {
+  padding: 30px;
+}
+.logoutWelcomeContainer .logoutWelcomeText h1 {
+  color: #FB8500;
+}
+.logoutWelcomeContainer .logoutWelcomeText p {
+  color: #023047;
+}
+.logoutWelcomeContainer .logoutWelcomeText #loggedInUsername {
+  color: #219EBC;
+}
+
+.listsContainer {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+}
+.listsContainer .readingList {
+  border: 2px solid #023047;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 50px;
+  margin-bottom: 60px;
+}
+.listsContainer .readingList ul {
+  list-style-type: none;
+}
+.listsContainer .readingList ul .bookDiv {
+  border: 2px solid #219EBC;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.listsContainer .readingList ul .bookDiv .title {
+  font-weight: bold;
+  color: #023047;
+}
+.listsContainer .readingList ul .bookDiv .rating {
+  font-style: italic;
+  font-size: smaller;
+  color: #FB8500;
+}
+.listsContainer .readingList ul .bookDiv .removeBtn {
+  align-self: end;
+}
+.listsContainer .readingList select {
+  margin: 20px 0px 20px;
+}
+.listsContainer .readingList h2 {
+  text-align: center;
+}
+.listsContainer .ratingList {
+  border: 2px solid #023047;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  padding: 50px;
+  margin-bottom: 60px;
+}
+.listsContainer .ratingList ul {
+  list-style-type: none;
+}
+.listsContainer .ratingList ul .bookDiv {
+  border: 2px solid #FB8500;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+}
+.listsContainer .ratingList ul .bookDiv .title {
+  font-weight: bold;
+  color: #023047;
+}
+.listsContainer .ratingList ul .bookDiv .rating {
+  font-style: italic;
+  font-size: smaller;
+  color: #FB8500;
+}
+.listsContainer .ratingList select {
+  margin: 20px 0px 20px;
+}
+.listsContainer .ratingList h2 {
+  text-align: center;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0px 70px;
+}
+.profile h1 {
+  margin-bottom: 20px;
+  color: #FB8500;
+}
+.profile .title {
+  font-weight: bolder;
+  color: #219EBC;
+}
+
+header.dark {
+  background: #023047;
+  color: white;
+}
+header.dark a {
+  color: #FB8500;
+}
+
+body.dark {
+  background: gainsboro;
+  color: #023047;
+}
+
+footer.dark {
+  background: #023047;
+  color: white;
+}
+footer.dark a {
+  text-decoration: none;
+  color: #FB8500;
+}
+footer.dark a:hover {
+  color: #FB8500;
+  text-decoration: underline;
+  font-weight: bolder;
+}/*# sourceMappingURL=style.css.map */

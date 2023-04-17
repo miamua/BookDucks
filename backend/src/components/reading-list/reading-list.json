@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_reading_list_reading_lists",
+  "info": {
+    "displayName": "reading-list",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "books": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::book.book"
+    }
+  }
+}
