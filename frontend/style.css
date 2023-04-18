@@ -9,6 +9,10 @@
   display: none;
 }
 
+a.profilepage {
+  display: none;
+}
+
 body {
   min-height: 100vh;
   display: flex;
@@ -193,21 +197,20 @@ footer .footer-socialMedia #linkedin {
   flex-direction: column;
   align-items: center;
 }
-.bookContent .bookBox .booksContainer .bookDiv .ratingDiv {
+.bookContent .bookBox .booksContainer .bookDiv .labelForBookMark {
+  font-size: x-large;
+  align-items: center;
+  align-self: end;
+  margin-bottom: 20px;
+}
+.bookContent .bookBox .booksContainer .bookInfoDiv .info {
+  font-size: 15px;
+}
+.bookContent .bookBox .booksContainer .bookInfoDiv .ratingDiv {
   display: flex;
   width: 210px;
   justify-content: space-between;
   margin-bottom: 10px;
-}
-.bookContent .bookBox .booksContainer .bookDiv .ratingDiv .starsAndRatingDiv {
-  display: flex;
-  align-items: center;
-}
-.bookContent .bookBox .booksContainer .bookDiv .ratingDiv .labelForBookMark {
-  font-size: 25px;
-}
-.bookContent .bookBox .booksContainer .bookInfoDiv .info {
-  font-size: 15px;
 }
 
 /* HIDE RADIO */
@@ -252,6 +255,7 @@ footer .footer-socialMedia #linkedin {
 }
 .logoutWelcomeContainer .logoutWelcomeText h1 {
   color: #FB8500;
+  margin-bottom: 10px;
 }
 .logoutWelcomeContainer .logoutWelcomeText p {
   color: #023047;
@@ -295,8 +299,12 @@ footer .footer-socialMedia #linkedin {
   font-size: smaller;
   color: #FB8500;
 }
-.listsContainer .readingList ul .bookDiv .removeBtn {
+.listsContainer .readingList ul .bookDiv .fa-trash-can {
   align-self: end;
+  font-size: large;
+}
+.listsContainer .readingList ul .bookDiv .fa-trash-can:hover {
+  color: #FB8500;
 }
 .listsContainer .readingList select {
   margin: 20px 0px 20px;
@@ -357,29 +365,93 @@ footer .footer-socialMedia #linkedin {
   color: #219EBC;
 }
 
-header.dark {
+header.navy {
   background: #023047;
   color: white;
 }
-header.dark a {
+header.navy a {
   color: #FB8500;
 }
 
-body.dark {
+body.navy {
   background: gainsboro;
   color: #023047;
 }
 
-footer.dark {
+footer.navy {
   background: #023047;
   color: white;
 }
-footer.dark a {
+footer.navy a {
   text-decoration: none;
   color: #FB8500;
 }
-footer.dark a:hover {
+footer.navy a:hover {
   color: #FB8500;
   text-decoration: underline;
   font-weight: bolder;
+}
+
+header.pink {
+  background: #6C4A4A;
+  color: white;
+}
+header.pink a {
+  color: #D14D72;
+}
+header.pink a:hover {
+  color: #D14D72;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+body.pink {
+  background: #FEF2F4;
+  color: #D14D72;
+}
+body.pink .logoutWelcomeText h1 {
+  color: #6C4A4A;
+}
+body.pink .logoutWelcomeText p {
+  color: #D14D72;
+}
+
+footer.pink {
+  background: #6C4A4A;
+  color: #FEF2F4;
+}
+footer.pink a {
+  text-decoration: none;
+  color: #D14D72;
+}
+footer.pink a:hover {
+  color: #D14D72;
+  text-decoration: underline;
+  font-weight: bolder;
+}
+
+.loginForm.pink .form-box {
+  background: #FFABAB;
+  border: 2px solid #6C4A4A;
+}
+.loginForm.pink .form-box h2 {
+  color: #6C4A4A;
+}
+.loginForm.pink .input-field {
+  background: white;
+}
+.loginForm.pink a {
+  text-decoration: none;
+  color: #D14D72;
+}
+.loginForm.pink p {
+  color: #6C4A4A;
+}
+.loginForm.pink button {
+  background: #FEF2F4;
+  color: #6C4A4A;
+}
+.loginForm.pink button:hover {
+  background: #D14D72;
+  color: #FEF2F4;
 }/*# sourceMappingURL=style.css.map */

@@ -15,10 +15,9 @@
     "theme": {
       "type": "enumeration",
       "enum": [
-        "light",
-        "dark"
-      ],
-      "default": "light"
+        "pink",
+        "navy"
+      ]
     }
   }
 }

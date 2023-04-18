@@ -102,24 +102,23 @@ let usersReadingList = async () => {
     //console.log(response);
     let bookDiv = document.createElement("div");
     bookDiv.setAttribute("class", "bookDiv");
-    let removeBtn = document.createElement("button");
-    removeBtn.innerText = "Remove";
-    removeBtn.setAttribute("class", "removeBtn");
+    let removeIcon = document.createElement("i");
+    removeIcon.setAttribute("class", "fa-solid fa-trash-can");
     let bookInfo = document.createElement("li");
     let imgDiv = document.createElement("div");
     imgDiv.setAttribute("class", "bookImgDiv");
     imgDiv.innerHTML = `<img src="http://localhost:1447${response.data.data.attributes.image.data.attributes.url}" height="200" />`;
     bookInfo.innerHTML = `<span class="title">${book.title}</span> <span class="rating">(${book.rating})</span><br>
     ${book.author}`;
-    bookDiv.prepend(removeBtn,imgDiv, bookInfo);
+    bookDiv.prepend(removeIcon,imgDiv, bookInfo);
     document.querySelector(".readingUl").append(bookDiv);
 
+    removeIcon.addEventListener("click", async() => {
+      await removeFromReadingList(book.id);
+      window.location.reload();
+   }
+   );
 
-    removeBtn.addEventListener("click", async() => {
-       await removeFromReadingList(book.id);
-       window.location.reload();
-    }
-    );
   });
 };
 
@@ -134,3 +133,4 @@ document.querySelector(".sorting2").addEventListener("change", () => {
 userInfo();
 usersReadingList();
 usersVotedList();
+

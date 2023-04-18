@@ -1,3 +1,35 @@
+let applyTheme = async () => {
+  let response = await axios.get("http://localhost:1447/api/startpage");
+  let theme = response.data.data.attributes.theme;
+  console.log(theme);
+  document.body.classList.add(theme);
+  document.querySelector("header").classList.add(theme);
+  document.querySelector("footer").classList.add(theme);
+  document.querySelector(".loginForm").classList.add(theme);
+  //document.querySelector(".logoutWelcomeText").classList.add(theme);
+  if (theme === "navy") {
+    document.querySelector(".headerDark").classList.remove("hidden");
+    document.querySelector(".header").classList.add("hidden");
+    document.querySelector(".footerDark").classList.remove("hidden");
+    document.querySelector(".footer").classList.add("hidden");
+    document.querySelector(".playStoreDark").classList.remove("hidden");
+    document.querySelector(".playStore").classList.add("hidden");
+    document.querySelector(".appStoreDark").classList.remove("hidden");
+    document.querySelector(".appStore").classList.add("hidden");
+  }else if (theme === "pink") {
+    document.querySelector(".headerPink").classList.remove("hidden");
+    document.querySelector(".header").classList.add("hidden");
+    document.querySelector(".footerPink").classList.remove("hidden");
+    document.querySelector(".footer").classList.add("hidden");
+    document.querySelector(".playStorePink").classList.remove("hidden");
+    document.querySelector(".playStore").classList.add("hidden");
+    document.querySelector(".appStorePink").classList.remove("hidden");
+    document.querySelector(".appStore").classList.add("hidden");
+    document.querySelector(".bigDuck").setAttribute("src", "./img/pinkduck.png");
+
+  }
+};
+
 let booksList = document.querySelector(".booksContainer");
 let renderPage = async () => {
   let disableVoting = true;
@@ -5,18 +37,20 @@ let renderPage = async () => {
   booksList.innerHTML = "";
   let userBooks = [];
   if (sessionStorage.getItem("token")) {
-    let response = await axios.get("http://localhost:1447/api/users/me?populate=*", {
-      headers: {
-        Authorization: `Bearer ${sessionStorage.getItem("token")}`,
-      },
-    });
+    let response = await axios.get(
+      "http://localhost:1447/api/users/me?populate=*",
+      {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("token")}`,
+        },
+      }
+    );
     document.querySelector(".logoutLink").classList.remove("hidden");
     document.querySelector(".userProfiletLink").classList.remove("hidden");
     document.querySelector(".loginLink").classList.add("hidden");
     document.querySelector(".registerLink").classList.add("hidden");
     document.querySelector(".welcome").classList.remove("hidden");
     document.querySelector("#siteDesc").classList.add("hidden");
-    //document.querySelector(".labelForBookMark").classList.remove("hidden");
     disableVoting = false;
     disabledBookMark = "inherit";
     let loggedInUsername = response.data.username;
@@ -25,18 +59,15 @@ let renderPage = async () => {
     userBooks = response.data.book;
     console.log(response);
     console.log(userBooks);
-  } else {
-    
   }
 
   let response = await axios.get("http://localhost:1447/api/books?populate=*");
   console.log(response.data.data);
   let books = response.data.data;
-  
-  
+
   books.forEach((book) => {
     let bookDiv = document.createElement("div");
-    bookDiv.setAttribute("class","bookDiv");
+    bookDiv.setAttribute("class", "bookDiv");
     let imageDiv = document.createElement("div");
     imageDiv.setAttribute("class", "imgDiv");
     let ratingDiv = document.createElement("div");
@@ -48,27 +79,24 @@ let renderPage = async () => {
     let bookMarkBox = document.createElement("input");
     let labelForBookMark = document.createElement("label");
     labelForBookMark.setAttribute("class", "labelForBookMark");
-    //labelForBookMark.setAttribute("class", "hidden");
     let bookMark = document.createElement("i");
     bookMark.setAttribute("class", "fa-regular fa-bookmark");
     bookMarkBox.setAttribute("type", "checkbox");
-    labelForBookMark.append(bookMarkBox,bookMark);
-    let starsAndRatingDiv = document.createElement("div");
-    starsAndRatingDiv.setAttribute("class","starsAndRatingDiv");
+    labelForBookMark.append(bookMarkBox, bookMark);
     let starsDiv = document.createElement("div");
     starsDiv.setAttribute("class", "starsDiv");
 
     let bookRatings = Number(book.attributes.rating);
     for (let i = 1; i <= 5; i++) {
-    let star = document.createElement("i");
-    let labelForStars = document.createElement("label");
-    let votingStars = document.createElement("input");
-    if (i <= bookRatings) {
-      star.setAttribute("class", "fa fa-star checked")
-    } else {
-      star.setAttribute("class", "fa-regular fa-star")
-      star.style.color = "#ffa600";
-    }
+      let star = document.createElement("i");
+      let labelForStars = document.createElement("label");
+      let votingStars = document.createElement("input");
+      if (i <= bookRatings) {
+        star.setAttribute("class", "fa fa-star checked");
+      } else {
+        star.setAttribute("class", "fa-regular fa-star");
+        star.style.color = "#ffa600";
+      }
 
       votingStars.setAttribute("type", "radio");
       votingStars.setAttribute("class", "votingStars");
@@ -76,12 +104,11 @@ let renderPage = async () => {
       votingStars.setAttribute("value", i);
       votingStars.disabled = disableVoting;
       labelForBookMark.style.display = disabledBookMark;
-      
-      
+
       let votes = Number(book.attributes.votes);
       let totalScore = Number(book.attributes.totalScore);
       let avgScore = 0;
-      votingStars.addEventListener("change", async() => {
+      votingStars.addEventListener("change", async () => {
         votes += 1;
         totalScore += Number(votingStars.value);
         avgScore = totalScore / votes;
@@ -92,29 +119,29 @@ let renderPage = async () => {
         console.log("avg", roundavgScore);
 
         bookRating(votingStars.name, roundavgScore, votes, totalScore);
-        let response = await axios.get(`http://localhost:1447/api/users/${sessionStorage.getItem("userId")}?populate=*`);
+        let response = await axios.get(
+          `http://localhost:1447/api/users/${sessionStorage.getItem(
+            "userId"
+          )}?populate=*`
+        );
         console.log(response);
-        if(response.data.user_rating == null){
+        if (response.data.user_rating == null) {
           postUsersRating(votingStars.name, votingStars.value);
+        } else {
+          putUsersRating(votingStars.name);
         }
-        else{
-          putUsersRating(votingStars.name)
-        }
-        
       });
 
       //BOOKMARK STUFF
-      if (userBooks.find((item) => item.title === book.attributes.title)){
+      if (userBooks.find((item) => item.title === book.attributes.title)) {
         bookMark.setAttribute("class", "fa-solid fa-bookmark");
         bookMarkBox.checked = true;
-      };
-      
+      }
+
       labelForStars.append(votingStars, star);
       starsDiv.append(labelForStars);
-      starsAndRatingDiv.append(starsDiv, ratingScore)
-      ratingDiv.append(starsAndRatingDiv, labelForBookMark);
-      };
-
+      ratingDiv.append(starsDiv, ratingScore);
+    }
 
     imageDiv.innerHTML = `<img src="http://localhost:1447${book.attributes.image.data.attributes.url}" height="250" />`;
     bookInfoDiv.innerHTML = `<p><b>${book.attributes.title} </b></p>
@@ -122,28 +149,26 @@ let renderPage = async () => {
     <p class="info"><b>Author:</b> ${book.attributes.author}</p>
     <p class="info"><b>Print length:</b> ${book.attributes.pages}  pages.</p>
     <p class="info"><b>Publication date:</b> ${book.attributes.publication_date}</p>`;
-    bookDiv.prepend(imageDiv, ratingDiv,bookInfoDiv);
+    bookInfoDiv.prepend(ratingDiv);
+    bookDiv.prepend(labelForBookMark, imageDiv, bookInfoDiv);
     booksList.append(bookDiv);
-    
 
     //BOOKMARK BTN
     bookMarkBox.addEventListener("change", () => {
-      if(bookMarkBox.checked){
+      if (bookMarkBox.checked) {
         bookMark.setAttribute("class", "fa-solid fa-bookmark");
         addToReadingList(book.id);
         console.log("added!");
-      }else{
+      } else {
         bookMark.setAttribute("class", "fa-regular fa-bookmark");
         removeFromReadingList(book.id);
         console.log("removed!");
       }
-      
+
       console.log(bookMarkBox.checked);
     });
-
-
-  })};
-
+  });
+};
 
 ///ADD TO READING LIST
 let addToReadingList = async (bookId) => {
@@ -154,17 +179,16 @@ let addToReadingList = async (bookId) => {
         user: {
           connect: [sessionStorage.getItem("userId")],
         },
-        },  
       },
+    },
     {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
-    });
+    }
+  );
   console.log(response);
 };
-
-
 
 ///REMOVE FROM READING LIST
 let removeFromReadingList = async (bookId) => {
@@ -175,16 +199,16 @@ let removeFromReadingList = async (bookId) => {
         user: {
           disconnect: [sessionStorage.getItem("userId")],
         },
-        },  
       },
+    },
     {
       headers: {
         Authorization: `Bearer ${sessionStorage.getItem("token")}`,
       },
-    });
+    }
+  );
   console.log(response);
 };
-
 
 ///----RATING-----
 let bookRating = async (id, avgScore, votes, totalScore) => {
@@ -206,7 +230,6 @@ let bookRating = async (id, avgScore, votes, totalScore) => {
   renderPage();
 };
 
-
 let postUsersRating = async (bookId) => {
   let response = await axios.post(
     `http://localhost:1447/api/ratings`,
@@ -214,10 +237,10 @@ let postUsersRating = async (bookId) => {
       data: {
         user: {
           connect: [sessionStorage.getItem("userId")],
-        }, 
+        },
         books: {
           connect: [bookId],
-        },   
+        },
       },
     },
     {
@@ -229,9 +252,12 @@ let postUsersRating = async (bookId) => {
   console.log(response);
 };
 
-
 let putUsersRating = async (bookId) => {
-  let usersResponse = await axios.get(`http://localhost:1447/api/users/${sessionStorage.getItem("userId")}?populate=*`);
+  let usersResponse = await axios.get(
+    `http://localhost:1447/api/users/${sessionStorage.getItem(
+      "userId"
+    )}?populate=*`
+  );
   let userRatingId = await usersResponse.data.user_rating.id;
   let response = await axios.put(
     `http://localhost:1447/api/ratings/${userRatingId}`,
@@ -239,7 +265,7 @@ let putUsersRating = async (bookId) => {
       data: {
         books: {
           connect: [bookId],
-        },   
+        },
       },
     },
     {
@@ -250,37 +276,6 @@ let putUsersRating = async (bookId) => {
   );
   console.log(response);
 };
-
-
-const applyTheme = async () =>{
-  let response = await axios.get("http://localhost:1447/api/startpage");
-  let theme = response.data.data.attributes.theme;
-  console.log(theme);
-  let headLogo = document.querySelector(".header");
-  let footLogo = document.querySelector(".footer");
-  let playStore = document.querySelector(".playStore");
-  let appStore = document.querySelector(".appStore");
-  document.body.classList.add(theme);
-  document.querySelector("header").classList.add(theme);
-  document.querySelector("footer").classList.add(theme);
-  headLogo.classList.add(theme);
-  footLogo.classList.add(theme);
-  appStore.classList.add(theme);
-  playStore.classList.add(theme);
-  if(theme === "light"){
-    headLogo.setAttribute("src", "./img/default_logo.png");
-    footLogo.setAttribute("src", "./img/default_logo.png");
-    
-  }else if(theme === "dark") {
-    headLogo.setAttribute("src", "./img/logo_darkmode.png");
-    footLogo.setAttribute("src", "./img/logo_darkmode.png");
-    appStore.setAttribute("src", "./img/App_Store_Dark.png")
-    playStore.setAttribute("src", "./img/Play_Store_Dark.png")
-  }
-  }
-
-
-
 
 applyTheme();
 renderPage();
