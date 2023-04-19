@@ -1,35 +1,3 @@
-let applyTheme = async () => {
-  let response = await axios.get("http://localhost:1447/api/startpage");
-  let theme = response.data.data.attributes.theme;
-  console.log(theme);
-  document.body.classList.add(theme);
-  document.querySelector("header").classList.add(theme);
-  document.querySelector("footer").classList.add(theme);
-  document.querySelector(".loginForm").classList.add(theme);
-  //document.querySelector(".logoutWelcomeText").classList.add(theme);
-  if (theme === "navy") {
-    document.querySelector(".headerDark").classList.remove("hidden");
-    document.querySelector(".header").classList.add("hidden");
-    document.querySelector(".footerDark").classList.remove("hidden");
-    document.querySelector(".footer").classList.add("hidden");
-    document.querySelector(".playStoreDark").classList.remove("hidden");
-    document.querySelector(".playStore").classList.add("hidden");
-    document.querySelector(".appStoreDark").classList.remove("hidden");
-    document.querySelector(".appStore").classList.add("hidden");
-  }else if (theme === "pink") {
-    document.querySelector(".headerPink").classList.remove("hidden");
-    document.querySelector(".header").classList.add("hidden");
-    document.querySelector(".footerPink").classList.remove("hidden");
-    document.querySelector(".footer").classList.add("hidden");
-    document.querySelector(".playStorePink").classList.remove("hidden");
-    document.querySelector(".playStore").classList.add("hidden");
-    document.querySelector(".appStorePink").classList.remove("hidden");
-    document.querySelector(".appStore").classList.add("hidden");
-    document.querySelector(".bigDuck").setAttribute("src", "./img/pinkduck.png");
-
-  }
-};
-
 let booksList = document.querySelector(".booksContainer");
 let renderPage = async () => {
   let disableVoting = true;
@@ -113,12 +81,12 @@ let renderPage = async () => {
         totalScore += Number(votingStars.value);
         avgScore = totalScore / votes;
         let roundavgScore = avgScore.toFixed(2);
-        console.log("total", totalScore);
-        console.log("starValue", Number(votingStars.value));
-        console.log("votes", votes);
-        console.log("avg", roundavgScore);
-
+        //console.log("total", totalScore);
+        //console.log("starValue", Number(votingStars.value));
+        //console.log("votes", votes);
+        //console.log("avg", roundavgScore);
         bookRating(votingStars.name, roundavgScore, votes, totalScore);
+
         let response = await axios.get(
           `http://localhost:1447/api/users/${sessionStorage.getItem(
             "userId"
@@ -126,9 +94,9 @@ let renderPage = async () => {
         );
         console.log(response);
         if (response.data.user_rating == null) {
-          postUsersRating(votingStars.name, votingStars.value);
+          createUsersRating(votingStars.name, votingStars.value);
         } else {
-          putUsersRating(votingStars.name);
+          addToUsersRating(votingStars.name);
         }
       });
 
@@ -230,7 +198,7 @@ let bookRating = async (id, avgScore, votes, totalScore) => {
   renderPage();
 };
 
-let postUsersRating = async (bookId) => {
+let createUsersRating = async (bookId) => {
   let response = await axios.post(
     `http://localhost:1447/api/ratings`,
     {
@@ -252,7 +220,7 @@ let postUsersRating = async (bookId) => {
   console.log(response);
 };
 
-let putUsersRating = async (bookId) => {
+let addToUsersRating = async (bookId) => {
   let usersResponse = await axios.get(
     `http://localhost:1447/api/users/${sessionStorage.getItem(
       "userId"
@@ -275,6 +243,33 @@ let putUsersRating = async (bookId) => {
     }
   );
   console.log(response);
+};
+
+let applyTheme = async () => {
+  let response = await axios.get("http://localhost:1447/api/startpage");
+  let theme = response.data.data.attributes.theme;
+  //console.log(theme);
+  document.body.classList.add(theme);
+  document.querySelector("header").classList.add(theme);
+  document.querySelector("footer").classList.add(theme);
+  document.querySelector(".loginForm").classList.add(theme);
+  document.querySelector(".header").classList.add(theme);
+  document.querySelector(".footer").classList.add(theme);
+  document.querySelector(".playStore").classList.add(theme);
+  document.querySelector(".appStore").classList.add(theme);
+  if (theme === "navy") {
+    document.querySelector(".header").setAttribute("src", "./img/logo_darkmode.png");
+    document.querySelector(".footer").setAttribute("src", "./img/logo_darkmode.png");
+    document.querySelector(".playStore").setAttribute("src", "./img/Play_Store_Dark.png");
+    document.querySelector(".appStore").setAttribute("src", "./img/App_Store_Dark.png");
+  }else if (theme === "pink") {
+    document.querySelector(".header").setAttribute("src", "./img/logo_pink.png");
+    document.querySelector(".footer").setAttribute("src", "./img/logo_pink.png");
+    document.querySelector(".playStore").setAttribute("src", "./img/Play_Store_pink.png");
+    document.querySelector(".appStore").setAttribute("src", "./img/App_Store_pink.png");
+    document.querySelector(".bigDuck").setAttribute("src", "./img/pinkduck.png");
+
+  }
 };
 
 applyTheme();

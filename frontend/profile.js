@@ -35,7 +35,7 @@ let usersVotedList = async () => {
       }
     );
     let usersBooks = response.data.data.attributes.books.data;
-    //console.log(usersBooks);
+    console.log(usersBooks);
     if (sort === "Rating") {
       usersBooks.sort((a, b) => b.attributes.rating - a.attributes.rating);
     } else if (sort === "Author") {
